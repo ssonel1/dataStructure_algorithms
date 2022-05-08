@@ -14,6 +14,7 @@ using namespace std;
 
 
  binaryTree* createNode(int data_);
+ int deleteNode(binaryTree* node);
  int deleteTree(binaryTree* root);
  int insertNode(binaryTree* root, int data_);  //insert node with level order traversal
  int printTree(binaryTree* root);
@@ -77,6 +78,10 @@ int main()
     printLevelOrder(root);
     cout << "*****************************************\r\n";
     printLevelOrderReverse(root);
+    cout << "*****************************************\r\n";
+  
+
+
 
     cout << "Hello World!\n";
 
@@ -107,6 +112,18 @@ binaryTree* createNode(int data_)
 }
 
 
+int deleteNode(binaryTree* node)
+{
+    if (!node)
+    {
+        return 0;
+    }
+
+    delete node;
+    return 1;
+}
+
+
 int deleteTree(binaryTree* root)
 {
     if (!root)
@@ -114,10 +131,20 @@ int deleteTree(binaryTree* root)
         return 0;
     }
 
-    delete root;
+    if (root->leftNode)
+    {
+        deleteTree(root->leftNode);
+    }
+
+    if (root->rightNode)
+    {
+        deleteTree(root->rightNode);
+    }
+
+    deleteNode(root);
+
     return 1;
 }
-
 
 
 
@@ -125,7 +152,7 @@ int insertNode(binaryTree* root, int data_)
 {
     if (!root)
     {
-        return 0;   //root is empty??
+        return 0;   //root is not valid
     }
 
     binaryTree* tmp;
@@ -174,6 +201,7 @@ int printTree(binaryTree* root)
 {
     if (!root)
     {
+        cout << "Tree not available. \r\n";
         return 0;
     }
 
@@ -197,6 +225,7 @@ int printLevelOrder(binaryTree* root)
 {
     if (!root)
     {
+        cout << "Tree not available. \r\n";
         return 0;
     }
 
@@ -230,6 +259,7 @@ int printLevelOrderReverse(binaryTree* root)
 {
     if (!root)
     {
+        cout << "Tree not available. \r\n";
         return 0;
     }
 
