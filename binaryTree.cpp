@@ -253,3 +253,42 @@ int treeSize2(binaryTree* root)
     deleteQueue(q);
     return treeSize;
 }
+
+
+
+int findMaxElement(binaryTree* root)
+{
+    if (!root)
+    {
+        return 0;
+    }
+
+    int maxVal = root->data;
+    queue* q = createQueue(50);
+    binaryTree* tmp;
+
+    enqueue(q, root);
+
+    while (!isQueueEmpty(q))
+    {
+        tmp = dequeue(q);
+
+        if (tmp->rightNode)
+        {
+            enqueue(q, tmp->rightNode);
+        }
+
+        if (tmp->leftNode)
+        {
+            enqueue(q, tmp->leftNode);
+        }
+
+        if (tmp->data > maxVal)
+        {
+            maxVal = tmp->data;
+        }
+    }
+
+    deleteQueue(q);
+    return maxVal;
+}
