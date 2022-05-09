@@ -88,3 +88,46 @@ int deleteListNode(linkedList** head, int index)
 	return 1;
 }
 
+
+
+int listSize(linkedList* head)
+{
+	if (!head)
+	{
+		return 0;
+	}
+
+	int listSize = 0;
+	linkedList* tmpNode = head;
+
+	while (tmpNode != NULL)
+	{
+		tmpNode = tmpNode->nextNode;
+		listSize++;
+	}
+
+	return listSize;
+}
+
+
+
+int deleteList(linkedList* head)
+{
+	if (!head)
+	{
+		return 0;
+	}
+
+	linkedList* tmpNode = head;
+	linkedList* prevNode = NULL;
+
+	while (tmpNode != NULL)
+	{
+		prevNode = tmpNode;
+		tmpNode = tmpNode->nextNode;
+		delete prevNode;
+	}
+
+	head = NULL;
+	return 1;
+}

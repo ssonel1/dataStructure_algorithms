@@ -29,9 +29,7 @@ int main()
     deleteListNode(&head, 1);
     deleteListNode(&head, 4);
     deleteListNode(&head, 30);
-    deleteListNode(&head, 4);
-
-
+    deleteList(head);
 
     cout << "Hello World!\n";
 
