@@ -53,3 +53,38 @@ int insertListNode(linkedList** head, int index, int data_)
 	return 1;
 }
 
+
+
+int deleteListNode(linkedList** head, int index)
+{
+	if (!(*head) || (index < 0))
+	{
+		return 0;
+	}
+
+	linkedList* prevNode = NULL;
+	linkedList* nodeToDelete = *head;
+
+	if (index == 0)	//delete head
+	{
+		(*head) = (*head)->nextNode;	//this is why we need double pointer
+		delete nodeToDelete;
+		return 1;
+	}
+
+	for (int i = 0; i < index; i++)
+	{
+		prevNode = nodeToDelete;
+		nodeToDelete = nodeToDelete->nextNode;
+
+		if (!nodeToDelete)	//check if index is out of boundry, it'll make node NULL if it is.
+		{
+			return 0;
+		}
+	}
+
+	prevNode->nextNode = nodeToDelete->nextNode;
+	delete nodeToDelete;
+	return 1;
+}
+

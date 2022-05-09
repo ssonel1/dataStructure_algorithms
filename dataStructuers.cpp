@@ -23,7 +23,13 @@ int main()
     insertListNode(&head, 1, 44);
     insertListNode(&head, 5, 5);
     insertListNode(&head, 55, 1);   
-
+    deleteListNode(&head, 1);
+    deleteListNode(&head, 0);
+    deleteListNode(&head, 0);
+    deleteListNode(&head, 1);
+    deleteListNode(&head, 4);
+    deleteListNode(&head, 30);
+    deleteListNode(&head, 4);
 
 
 

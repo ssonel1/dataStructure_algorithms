@@ -11,6 +11,6 @@ struct linkedList
 
 linkedList* createList(int data_);
 int insertListNode(linkedList** head, int index, int data_);
-
+int deleteListNode(linkedList** head, int index);
 
 
