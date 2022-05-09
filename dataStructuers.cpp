@@ -5,30 +5,25 @@
 #include "binaryTree.h"
 #include "queue.h"
 #include "stack.h"
+#include "linkedList.h"
 
 using namespace std;
 
 
 int main()
 {
-    binaryTree* root = createNode(0);
+    //test
+    linkedList* head = createList(0);
+    insertListNode(&head, 1, 1);
+    insertListNode(&head, 2, 2);
+    insertListNode(&head, 3, 3);
+    insertListNode(&head, 1, 11);
+    insertListNode(&head, 0, 22);
+    insertListNode(&head, 0, 33);
+    insertListNode(&head, 1, 44);
+    insertListNode(&head, 5, 5);
+    insertListNode(&head, 55, 1);   
 
-    for (int i = 1; i < 31; i++)
-    {
-        insertNode(root, i);
-    }
-
-    cout << "Tree Size2 is: " << treeSize2(root) << "\r\n";
-    cout << "*****************************************\r\n";
-    cout << "Tree Size is: " << treeSize(root) << "\r\n";
-    cout << "*****************************************\r\n";
-    printTree(root);
-    cout << "*****************************************\r\n";
-    printLevelOrder(root);
-    cout << "*****************************************\r\n";
-    printLevelOrderReverse(root);
-    cout << "*****************************************\r\n";
-    cout << "Max Element: " << findMaxElement(root) << "\r\n";
 
 
 

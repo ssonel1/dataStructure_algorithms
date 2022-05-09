@@ -20,6 +20,6 @@ int printLevelOrderReverse(binaryTree* root);
 int treeSize(binaryTree* root);    //with recursion
 int treeSize2(binaryTree* root);   //without recursion
 int findMaxElement(binaryTree* root);
-
+int depthOfTree(binaryTree* root);
 
 

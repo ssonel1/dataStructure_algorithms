@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClCompile Include="binaryTree.cpp" />
     <ClCompile Include="dataStructuers.cpp" />
+    <ClCompile Include="linkedList.cpp" />
     <ClCompile Include="queue.cpp" />
     <ClCompile Include="stack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binaryTree.h" />
+    <ClInclude Include="linkedList.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>
