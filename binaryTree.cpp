@@ -68,7 +68,7 @@ int insertNode(binaryTree* root, int data_)
     binaryTree* tmp;
     binaryTree* nodeToInsert = createNode(data_);
 
-    queue* q = createQueue(50);
+    queue* q = createQueue(50, true);
     enqueue(q, root);
 
     while (!isQueueFull(q))
@@ -139,7 +139,7 @@ int printLevelOrder(binaryTree* root)
         return 0;
     }
 
-    queue* q = createQueue(50);
+    queue* q = createQueue(50, true);
     binaryTree* tmp;
 
     enqueue(q, root);
@@ -174,8 +174,8 @@ int printLevelOrderReverse(binaryTree* root)
     }
 
     binaryTree* tmp;
-    queue* q = createQueue(50);
-    stack* s = createStack(50, false);
+    queue* q = createQueue(50, true);
+    stack* s = createStack(50, true);
 
     enqueue(q, root);
 
@@ -226,7 +226,7 @@ int treeSize2(binaryTree* root)
         return 0;
     }
 
-    queue* q = createQueue(50);
+    queue* q = createQueue(50, true);
     binaryTree* tmp;
     int treeSize = 1;
 
@@ -264,7 +264,7 @@ int findMaxElement(binaryTree* root)
     }
 
     int maxVal = root->data;
-    queue* q = createQueue(50);
+    queue* q = createQueue(50, true);
     binaryTree* tmp;
 
     enqueue(q, root);

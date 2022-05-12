@@ -2,14 +2,45 @@
 #include "queue.h"
 
 
-queue* createQueue(int cap)
+static int doubleQueueCapacity(queue* q)
+{
+    binaryTree** bTree = new (binaryTree*[q->capacity * 2]);
+    if (!bTree)
+    {
+        return 0;
+    }
+
+    for (int i = 0; i < q->size; i ++)
+    {
+        bTree[q->front + i] = q->q[(q->front + i) % q->capacity];
+    }
+
+    q->capacity *= 2;
+    delete[] q->q;
+    q->q = bTree;
+    return 1;
+}
+
+
+queue* createQueue(int cap, bool isDynamic)
 {
     queue* tmp = new queue;
+    if (!tmp)
+    {
+        return 0;
+    }
     tmp->capacity = cap;
     tmp->front = 0;
     tmp->rear = 0;
     tmp->size = 0;
+    tmp->isDynamic = isDynamic;
     tmp->q = new (binaryTree * [cap]);
+
+    if (!tmp->q)
+    {
+        delete tmp;
+        return 0;
+    }
 
     return tmp;
 }
@@ -66,16 +97,33 @@ int enqueue(queue* q, binaryTree* node)
         return 0; //it's null
     }
 
-    if (!isQueueFull(q))
+    if (isQueueFull(q))
     {
-        q->q[q->rear] = node;
-
-        q->rear = (q->rear + 1) % q->capacity;
-        q->size++;
-        return 1;
+        if (q->isDynamic == true)
+        {
+            if (!doubleQueueCapacity(q))
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            return 0; //it's full and cannot dynamically grow
+        }
     }
-
-    return 0;
+    
+    q->q[q->rear] = node;
+    if ((q->size + 1) != q->capacity)     //buraya daha sonra bi daha bak, gece gece kafam almiyor.
+    {
+        q->rear = (q->rear + 1) % q->capacity;
+    }
+    else
+    {
+        q->rear++;
+    }
+    
+    q->size++;
+    return 1;    
 }
 
 

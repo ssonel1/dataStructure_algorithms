@@ -11,7 +11,7 @@ struct stack
     binaryTree** stck;
 };
 
-stack* createStack(int cap, bool isDynamic);
+stack* createStack(int cap = 0, bool isDynamic = false);
 int deleteStack(stack* stck);
 bool isStackFull(stack* stck);
 bool isStackEmpty(stack* stck);

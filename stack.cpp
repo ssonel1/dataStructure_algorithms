@@ -32,7 +32,7 @@ static int doubleStackCapacity(stack* s)
 /*Functions*/
 
 
-stack* createStack(int cap = 0, bool isDynamic = false)
+stack* createStack(int cap, bool isDynamic)
 {
     stack* stck = new stack;
     if (!stck)

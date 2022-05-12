@@ -15,13 +15,21 @@ int main()
     
     
     //test
-    stack* stck = createStack(2, true); //starting with capacity 2 
-
+    queue* q = createQueue(1, true);
+    
     
 
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < 4; i++)
     {
-        push(stck, createNode(i));
+        enqueue(q, createNode(i));
+    }
+
+    dequeue(q);
+    dequeue(q);
+
+    for (int k = 0; k < 16; k++)
+    {
+        enqueue(q, createNode(k));
     }
 
     cout << "Hello World!\n";
