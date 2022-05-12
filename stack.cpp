@@ -3,7 +3,36 @@
 
 
 
-stack* createStack(int cap)
+/*Static Functions*/
+static int doubleStackCapacity(stack* s)
+{
+    
+    binaryTree** newStack = new (binaryTree*[s->capacity * 2]);
+    if (!newStack)
+    {
+        return 0; //check if memory allocated
+    }
+
+    for (int i = 0; i < s->size; i++)
+    {
+        newStack[i] = s->stck[i];
+    }
+    delete[] s->stck;
+    s->capacity *= 2;
+    s->stck = newStack;
+
+    return 1;
+}
+
+
+
+
+
+
+/*Functions*/
+
+
+stack* createStack(int cap = 0, bool isDynamic = false)
 {
     stack* stck = new stack;
     if (!stck)
@@ -14,6 +43,7 @@ stack* createStack(int cap)
     stck->capacity = cap;
     stck->size = 0;
     stck->stck = new (binaryTree * [cap]);
+    stck->isDynamic = isDynamic;
 
     return stck;
 }
@@ -77,7 +107,18 @@ int push(stack* s, binaryTree* node)
 
     if (isStackFull(s))
     {
-        return 0;
+        if (s->isDynamic == false)
+        {
+            return 0;
+        }
+        else
+        {
+            //if it's full then we will double the amount of memory allocated for stack
+            if (!doubleStackCapacity(s))
+            {
+                return 0;
+            }
+        }
     }
 
     s->stck[s->size] = node;

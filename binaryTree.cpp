@@ -175,7 +175,7 @@ int printLevelOrderReverse(binaryTree* root)
 
     binaryTree* tmp;
     queue* q = createQueue(50);
-    stack* s = createStack(50);
+    stack* s = createStack(50, false);
 
     enqueue(q, root);
 

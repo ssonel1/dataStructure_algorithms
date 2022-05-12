@@ -7,10 +7,11 @@ struct stack
 {
     int capacity;
     int size;
+    bool isDynamic;
     binaryTree** stck;
 };
 
-stack* createStack(int cap);
+stack* createStack(int cap, bool isDynamic);
 int deleteStack(stack* stck);
 bool isStackFull(stack* stck);
 bool isStackEmpty(stack* stck);
